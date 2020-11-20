@@ -54,13 +54,13 @@ import { baseUrl } from '../shared/baseUrl';
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Menu</BreadcrumbItem>
+                        <BreadcrumbItem active>Our Centers</BreadcrumbItem>
                     </Breadcrumb>
                     {/* <div className="col-12">
                         <h3>Menu</h3>
                         <hr />
                     </div> */}
-                    <span id="route" className="ml-3 text-secondary"> Menu </span>
+                    <span id="route" className="ml-3 text-secondary"> Our Centers </span>
                 </div>
                 <div className="row">
                     {menu}
