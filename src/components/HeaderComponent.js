@@ -51,22 +51,22 @@ class Header extends Component {
     render() {
         return(
             <React.Fragment>
-                <Navbar dark expand="sm">
+                <Navbar dark expand="md">
                     <div className="container">
-                        <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className="mr-auto"><img src="assets/images/logo.jpeg" alt="MedGira" height="40" width="51"/></NavbarBrand>
+                        <NavbarBrand className="mr-auto"><img src="assets/images/logo.jpeg" alt="MedGira" height="48" width="51"/>  MedGira</NavbarBrand>
+                        <NavbarToggler onClick={this.toggleNav} className="ml-auto"/>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
+                            <Nav navbar className="ml-auto">
                                 <NavItem>
                                     <NavLink className="nav-link" to="/home">
                                         <span className="fa fa-home fa-lg"></span> Home
                                     </NavLink>
                                 </NavItem>
-                                <NavItem>
+                                {/* <NavItem>
                                     <NavLink className="nav-link" to="/aboutus">
                                         <span className="fa fa-info fa-lg"></span> About Us
                                     </NavLink>
-                                </NavItem>
+                                </NavItem> */}
                                 <NavItem>
                                     <NavLink className="nav-link" to="/menu">
                                         <span className="fa fa-list fa-lg"></span> Menu
@@ -74,13 +74,13 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/contactus">
-                                        <span className="fa fa-card fa-lg"></span> Contact Us
+                                        <span className="fa fa-phone fa-lg"></span> Contact Us
                                     </NavLink>
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg"></span> Sign Up</Button>
+                                    <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> Sign Up</Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>

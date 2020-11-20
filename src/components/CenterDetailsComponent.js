@@ -38,7 +38,7 @@ class CommentFormButton extends Component {
 
     handleSubmit(values) {
         this.modalToggler();
-        this.props.postComment(this.props.dishId, values.rating, values.firstname, values.comment);
+        this.props.postComment(this.props.centerId, values.rating, values.firstname, values.comment);
         //event.preventDefault();
     }
     render() {
@@ -99,15 +99,15 @@ class CommentFormButton extends Component {
     
 }
 
-function RenderDish({ dish }) {
+function RenderCenter({ center }) {
     return (
         <div className='col-12 col-md-5 m-1'>
             <Card>
-                <CardImg src={baseUrl + dish.image} alt={dish.name} />
+                <CardImg src={baseUrl + center.image} alt={center.name} />
                 <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
+                    <CardTitle>{center.name}</CardTitle>
                     <CardText>
-                        {dish.description}
+                        {center.description}
                     </CardText>
                 </CardBody>
             </Card>
@@ -115,7 +115,7 @@ function RenderDish({ dish }) {
     );
 };
 
-function RenderComments({comments, postComment, dishId}) {
+function RenderComments({comments, postComment, centerId}) {
     
     if (comments != null) {
         
@@ -140,7 +140,7 @@ function RenderComments({comments, postComment, dishId}) {
                         {commentsListItem}
                     </ul>
                 </div>
-                <CommentFormButton dishId={dishId} postComment={postComment}/>
+                <CommentFormButton centerId={centerId} postComment={postComment}/>
             </div>
             
         )
@@ -152,7 +152,7 @@ function RenderComments({comments, postComment, dishId}) {
 
 };
 
-const Dish = (props) => {
+const Center = (props) => {
     if (props.isLoading) {
         return(
             <div className="container">
@@ -171,32 +171,32 @@ const Dish = (props) => {
             </div>
         );
     }
-    else if (props.dish != null) 
-    if (props.dish != null) {
+    else if (props.center != null) 
+    if (props.center != null) {
         return (
 
-            <div className="container">
+            <div className="container mt-3">
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                        <BreadcrumbItem active>{props.center.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.dish.name}</h3>
+                        <h3>{props.center.category}</h3>
                         <hr />
                     </div>
                 </div>
                 
                 <div className="col-12">
-                    <h3>{props.dish.name}</h3>
+                    <h3>{props.center.name}</h3>
                     <hr />
                 </div>
 
                 <div className="row">
-                    <RenderDish dish={props.dish} />
+                    <RenderCenter center={props.center} />
                     <RenderComments comments={props.comments}
                         postComment={props.postComment}
-                        dishId={props.dish.id}
+                        centerId={props.center.id}
                     />
                 </div>
             </div>
@@ -210,4 +210,4 @@ const Dish = (props) => {
     }
 
 }
-export default Dish;
+export default Center;

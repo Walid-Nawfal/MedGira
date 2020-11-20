@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
-    function RenderMenuItem ({dish, onClick}) {
+    function RenderMenuItem ({center, onClick}) {
         return (
             <Card>
-                <Link to={`/menu/${dish.id}`}>
-                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                <Link to={`/menu/${center.id}`}>
+                    <CardImg width="100%" src={baseUrl + center.image} alt={center.name} />
                     <CardImgOverlay>
-                        <CardTitle>{dish.name}</CardTitle>
+                        <CardTitle className="text-white">{center.name}</CardTitle>
                     </CardImgOverlay>
                 </Link>
             </Card>
@@ -20,15 +20,15 @@ import { baseUrl } from '../shared/baseUrl';
 
     const Menu = (props) => {
 
-        const menu = props.dishes.dishes.map((dish) => {
+        const menu = props.centers.centers.map((center) => {
             return (
-                <div className="col-12 col-md-5 m-1"  key={dish.id}>
-                    <RenderMenuItem dish={dish}/>
+                <div className="col-12 col-md-6 mb-2"  key={center.id}>
+                    <RenderMenuItem center={center}/>
                 </div>
             );
         });
         
-        if (props.dishes.isLoading) {
+        if (props.centers.isLoading) {
             return(
                 <div className="container">
                     <div className="row">            
@@ -37,12 +37,12 @@ import { baseUrl } from '../shared/baseUrl';
                 </div>
             );
         }
-        else if (props.dishes.errMess) {
+        else if (props.centers.errMess) {
             return(
                 <div className="container">
                     <div className="row"> 
                         <div className="col-12">
-                            <h4>{props.dishes.errMess}</h4>
+                            <h4>{props.centers.errMess}</h4>
                         </div>
                     </div>
                 </div>
@@ -50,16 +50,17 @@ import { baseUrl } from '../shared/baseUrl';
             }
         else
         return (
-            <div className="container">
+            <div className="container mt-3">
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Menu</BreadcrumbItem>
                     </Breadcrumb>
-                    <div className="col-12">
+                    {/* <div className="col-12">
                         <h3>Menu</h3>
                         <hr />
-                    </div>
+                    </div> */}
+                    <span id="route" className="ml-3 text-secondary"> Menu </span>
                 </div>
                 <div className="row">
                     {menu}

@@ -1,0 +1,7 @@
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const CENTERS_LOADING = 'CENTERSES_LOADING';
+export const CENTERS_FAILED = 'CENTERS_FAILED';
+export const ADD_CENTERS = 'ADD_CENTERS';
+export const ADD_COMMENTS = 'ADD_COMMENTS';
+export const COMMENTS_FAILED = 'COMMENTS_FAILED';
+export const ADD_FEEDBACK = 'ADD_FEEDBACK';
