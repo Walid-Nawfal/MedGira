@@ -69,7 +69,7 @@ class Header extends Component {
                                 </NavItem> */}
                                 <NavItem>
                                     <NavLink className="nav-link" to="/menu">
-                                        <span className="fa fa-list fa-lg"></span> Menu
+                                        <span className="fa fa-list fa-lg"></span> Medical Centers
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
@@ -79,6 +79,9 @@ class Header extends Component {
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
+                                <NavItem className="mr-4 d-none d-lg-block">
+                                    <img src="assets/images/heart.png" alt="" height="41" width="150"></img>
+                                </NavItem>
                                 <NavItem>
                                     <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> Sign Up</Button>
                                 </NavItem>
@@ -117,7 +120,7 @@ class Header extends Component {
                                     Remember me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
+                            <Button type="submit" value="submit" color="primary" className="mt-3">Login</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

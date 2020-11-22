@@ -2,18 +2,23 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap'
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
-import { FadeTransform } from 'react-animation-components'
+import { FadeTransform } from 'react-animation-components';
+import SearchComponent from './SearchComponent'
 
 function RenderCard({item, isLoading, errMess}) {
     
     if (isLoading) {
         return(
+          <div id="box">
             <Loading />
+          </div> 
         );
     }
     else if (errMess) {
         return(
+          <div id="box">
             <h4>{errMess}</h4>
+          </div>
         );
     }
     else 
@@ -75,21 +80,16 @@ function Home(props) {
     return(
         <div className="container">
             <div className="row align-items-start justify-content-center">
-
-
                 <div className="col-12 col-md-8 m-5 offset-2">
                     <RenderCard item={props.center} isLoading={props.centersLoading} errMess={props.centerErrMess} />
                 </div>
-
-
-
-                {/* <div className="col-12 col-md m-1">
-                    <RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
-                </div>
-                <div className="col-12 col-md m-1">
-                    <RenderCard item={props.leader} isLoading={props.leadersLoading} errMess={props.leadersErrMess}/>
-                </div> */}
             </div>
+            <div className="row align-items-start justify-content-center p-1">
+                <div className="col-12 col-md-8 m-5 offset-2">
+                    <SearchComponent centers = {props.centers} />
+                </div>
+            </div>
+
         </div>
     );
 }

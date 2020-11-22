@@ -44,9 +44,10 @@ class Main extends Component {
           center={this.props.centers.centers.filter((center) => center.featured)}
           centersLoading={this.props.centers.isLoading}
           centerErrMess={this.props.centers.errMess}
+          centers={this.props.centers.centers}
         />
       );
-    }
+    };
 
     const CenterWithId = ({match}) => {
       return(
