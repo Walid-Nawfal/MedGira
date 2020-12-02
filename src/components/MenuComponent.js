@@ -4,6 +4,7 @@ import { Card, CardImg, CardImgOverlay,
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import SearchComponent from './SearchComponent'
 
     function RenderMenuItem ({center, onClick}) {
         return (
@@ -61,6 +62,7 @@ import { baseUrl } from '../shared/baseUrl';
                         <hr />
                     </div> */}
                     <span id="route" className="ml-3 text-secondary"> Our Centers </span>
+                    <span className="ml-auto mr-auto"><SearchComponent centers={props.centers.centers}/></span>
                 </div>
                 <div className="row">
                     {menu}
