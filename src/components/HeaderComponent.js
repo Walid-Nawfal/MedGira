@@ -3,7 +3,8 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios';
+import { baseUrl } from '../shared/baseUrl';
 
 class Header extends Component {
     
@@ -34,16 +35,16 @@ class Header extends Component {
     handleSignup(event) {
         this.toggleModal();
         alert("Email: " + this.email.value + "Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
+            );
         event.preventDefault();
         axios({
             method: 'post',
-            url: '/user',
+            url: baseUrl + 'users/signup' ,
             data: {
                 email: this.email.value,
                 userName: this.username.value,
                 password: this.password.value,
-                confirmPassword: this.confirmPassword.value
+                // confirmPassword: this.confirmPassword.value
             }
           });
     }
@@ -62,11 +63,11 @@ class Header extends Component {
                                         <span className="fa fa-home fa-lg"></span> Home
                                     </NavLink>
                                 </NavItem>
-                                {/* <NavItem>
+                                <NavItem>
                                     <NavLink className="nav-link" to="/aboutus">
                                         <span className="fa fa-info fa-lg"></span> About Us
                                     </NavLink>
-                                </NavItem> */}
+                                </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/menu">
                                         <span className="fa fa-list fa-lg"></span> Medical Centers
@@ -83,7 +84,7 @@ class Header extends Component {
                                     <img src="assets/images/heart.png" alt="" height="41" width="150"></img>
                                 </NavItem>
                                 <NavItem>
-                                    <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> Sign Up</Button>
+                                    <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> New Here?</Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -108,7 +109,7 @@ class Header extends Component {
                                 <Input type="password" id="password" name="password"
                                     innerRef={(input) => this.password = input}  />
                             </FormGroup>
-                            <FormGroup>
+                            {/* <FormGroup>
                                 <Label htmlFor="cpassword">Confirm password</Label>
                                 <Input type="cpassword" id="cpassword" name="cpassword"
                                     innerRef={(input) => this.password = input}  />
@@ -119,7 +120,7 @@ class Header extends Component {
                                     innerRef={(input) => this.remember = input}  />
                                     Remember me
                                 </Label>
-                            </FormGroup>
+                            </FormGroup> */}
                             <Button type="submit" value="submit" color="primary" className="mt-3">Login</Button>
                         </Form>
                     </ModalBody>

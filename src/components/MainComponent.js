@@ -4,9 +4,10 @@ import Footer from './FooterComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
-import Center from './CenterDetailsComponent'
+import Center from './CenterDetailsComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
+import { About } from './AboutComponent'
 
 import { postFeedback, postComment, fetchCenters, fetchComments } from '../redux/ActionCreators';
 import {actions} from 'react-redux-form';
@@ -69,7 +70,7 @@ class Main extends Component {
             <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
-                  {/* <Route exact path='/aboutus' component={() => <About /> } /> */}
+                  <Route exact path='/aboutus' component={() => <About /> } />
                   <Route exact path='/menu' component={() => <Menu centers={this.props.centers} />} />
                   <Route path='/menu/:centerId' component={CenterWithId} />
                   <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />

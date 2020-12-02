@@ -54,8 +54,8 @@ class Contact extends Component {
                             <i className="fa fa-envelope"></i>: <a href="mailto:confusion@food.net">confusion@food.net</a>
                             </address>
                     </div>
-                    <div className="col-12 col-sm-6 offset-sm-1">
-                        <h5>Map of our Location</h5>
+                    <div className="col-12 col-sm-7">
+                        <img src="assets/images/map.jpg" alt="" id="map"/>
                     </div>
                     <div className="col-12 col-sm-11 offset-sm-1">
                         <div className="btn-group" role="group">
@@ -91,7 +91,7 @@ class Contact extends Component {
                                             maxLength: 'Must be 15 characters or less'
                                         }}
                                      />
-                                </Col>
+                                    </Col>
                             </Row>
                             <Row className="form-group">
                                 <Label htmlFor="lastname" md={2}>Last Name</Label>
