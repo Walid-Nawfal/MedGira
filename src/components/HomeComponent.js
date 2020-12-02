@@ -82,9 +82,9 @@ function Home(props) {
     <React.Fragment>
       <div className="myContainer">
         <div className="row align-items-start justify-content-center">
-          <div className="col-12 col-md-3 m-5" id="signInCon">
-            <h2 className="m-2">✔ Sign In ✔</h2>
-            <img src="assets/images/profile.png" alt="Profile" id="profileImg" />
+          <div className="col-12 col-md-3 m-5 pt-2" id="signInCon">
+            <h4 className="m-2">Sign Up ✔</h4>
+              <img src="assets/images/profile.png" alt="Profile" id="profileImg"/>
             <SignIn />
           </div>
           <div className="col-12 col-md-6 m-5">

@@ -52,15 +52,15 @@ class Header extends Component {
     render() {
         return(
             <React.Fragment>
-                <Navbar dark expand="md">
+                <Navbar expand="md" id="myNav">
                     <div className="container">
-                        <NavbarBrand className="mr-auto"><img src="assets/images/logo.jpeg" alt="MedGira" height="48" width="51"/>  MedGira</NavbarBrand>
+                        <NavbarBrand id="NavbarBrand" className="mr-auto"><img src="assets/images/logo.jpeg" alt="MedGira" height="48" width="51"/>  MedGira</NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} className="ml-auto"/>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar className="ml-auto">
+                            <Nav navbar className="ml-auto" id="nestedNav">
                                 <NavItem>
                                     <NavLink className="nav-link" to="/home">
-                                        <span className="fa fa-home fa-lg"></span> Home
+                                        <span className="fa fa-home fa-lg slideTextTrigger"></span> <span className="slideText"> Home</span>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
@@ -80,18 +80,18 @@ class Header extends Component {
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
-                                <NavItem className="mr-4 d-none d-lg-block">
+                                {/* <NavItem className="mr-4 d-none d-lg-block">
                                     <img src="assets/images/heart.png" alt="" height="41" width="150"></img>
-                                </NavItem>
+                                </NavItem> */}
                                 <NavItem>
-                                    <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> New Here?</Button>
+                                    <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> Sign In</Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Sign Up</ModalHeader>
+                    <ModalHeader toggle={this.toggleModal}>Sign In</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleSignup}>
                             <FormGroup>
@@ -99,11 +99,11 @@ class Header extends Component {
                                 <Input type="text" id="username" name="username"
                                     innerRef={(input) => this.username = input} />
                             </FormGroup>
-                            <FormGroup>
+                            {/* <FormGroup>
                                 <Label htmlFor="email">Email</Label>
                                 <Input type="email" id="email" name="email"
                                     innerRef={(input) => this.email = input} />
-                            </FormGroup>
+                            </FormGroup> */}
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
                                 <Input type="password" id="password" name="password"

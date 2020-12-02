@@ -115,6 +115,8 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background-image: url(./waves.png);
+  background-repeat: no-repeat;
 }
 @media (min-width: 768px) {
   .myContainer {
@@ -138,7 +140,8 @@
   border-radius: 25px;
   width: 400px;
   text-align: center;
-  color: rgb(55, 112, 129);;
+  color: rgb(0, 191, 255);
+  background-color: #fff;
 }
 
 #signinstyle {
@@ -162,7 +165,7 @@
 }
 
 #profileImg {
-  height: 50%;
+  height: 30vh!important;
   width: 100%;
   border-radius: 15px;
   margin-bottom: 1vh;
@@ -170,4 +173,42 @@
 
 #map {
   width: 100%;
+}
+
+#myNav{
+  border-radius: 20px;
+  background-size: cover;
+}
+
+#nestedNav {
+  border-radius: 20px;
+  padding: 2vh;
+  border: 3px solid rgb(0, 191, 255);
+  background-color: white;
+}
+
+#nestedNav a {
+  transition: 0.5s;
+  border-bottom: 2px solid white;
+  margin: 0 0.5vh 0 0.5vh;
+  border-radius: 8px;
+  color:  rgb(0, 191, 255);
+}
+
+#nestedNav a:hover {
+  background-color: rgb(0, 191, 255);
+  color: white;
+  border-bottom: 2px solid rgb(0, 191, 255);
+}
+
+#NavbarBrand {
+  background-color: rgb(0, 191, 255);
+  padding: 2vh;
+  color: white;
+  border-radius: 20%;
+}
+
+#carousel img {
+  border-radius: 25px;
+  height: 500px;
 }
