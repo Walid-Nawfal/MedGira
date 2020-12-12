@@ -9,14 +9,15 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { About } from './AboutComponent'
 
-import { postFeedback, postComment, fetchCenters, fetchComments } from '../redux/ActionCreators';
+import { postFeedback, postComment, fetchCenters} from '../redux/ActionCreators';
 import {actions} from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import CMS from './CMSComponent';
 
 const mapStateToProps = state => {
   return {
     centers: state.centers,
-    comments: state.comments,
+    // comments: state.comments,
   }
 }
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   postComment: (centerId, rating, author, comment) => dispatch(postComment(centerId, rating, author, comment)),
   fetchCenters: () => { dispatch(fetchCenters())},
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
-  fetchComments: () => dispatch(fetchComments())
+  // fetchComments: () => dispatch(fetchComments())
 });
 
 class Main extends Component {
@@ -35,7 +36,7 @@ class Main extends Component {
 
   componentDidMount() {
     this.props.fetchCenters();
-    this.props.fetchComments();
+    // this.props.fetchComments();
   }
 
   render() {
@@ -52,13 +53,26 @@ class Main extends Component {
 
     const CenterWithId = ({match}) => {
       return(
-        <Center center={this.props.centers.centers.filter((center) => center.id === parseInt(match.params.centerId,10))[0]}
+        <Center center={this.props.centers.centers.filter((center) => center._id === match.params.centerId)[0]}
           isLoading={this.props.centers.isLoading}
           errMess={this.props.centers.errMess}
-          comments={this.props.comments.comments.filter((comment) => comment.centerId === parseInt(match.params.centerId,10))}
-          commentsErrMess={this.props.comments.errMess}
-          postComment={this.props.postComment}
+          // comments={this.props.centers.centers.comments.filter((comment) => comment.centerId === parseInt(match.params.centerId,10))}
+          // commentsErrMess={this.centers.centers.comments.errMess}
+          // postComment={this.props.centers.centers.comments.postComment}
         />
+      );
+    };
+
+    const MenuWithSpecialty = ({match}) => {
+      //alert(match.params);
+      // alert(JSON.stringify(this.props.centers.centers.filter((center) => center.category === match.params.specialty)));
+      // alert(JSON.stringify(this.props.centers));
+      return (
+        <Menu centers={this.props.centers.centers.filter((center) => center.category === match.params.specialty)}
+          isLoading={this.props.centers.isLoading}
+          errMess={this.props.centers.errMess}
+          allCenters={this.props.centers.centers}
+         />
       );
     };
 
@@ -71,9 +85,11 @@ class Main extends Component {
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
                   <Route exact path='/aboutus' component={() => <About /> } />
-                  <Route exact path='/menu' component={() => <Menu centers={this.props.centers} />} />
-                  <Route path='/menu/:centerId' component={CenterWithId} />
+                  <Route exact path='/menu' component={() => <Menu centers={this.props.centers.centers} isLoading={this.props.centers.isLoading} errMess={this.props.centers.errMess} allCenters={this.props.centers.centers} />} />
+                  <Route exact path='/menu/:specialty' component={MenuWithSpecialty} />
+                  <Route path='/centers/:centerId' component={CenterWithId} />
                   <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
+                  <Route exact path='/CMS' component={() => <CMS centers={this.props.centers.centers}/>}></Route>
                   <Redirect to="/home" />
               </Switch>
             </CSSTransition>

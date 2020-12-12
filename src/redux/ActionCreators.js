@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl'
+import Axios from 'axios';
 
 export const addComment = (comment) => ({
     type: ActionTypes.ADD_COMMENT,
@@ -46,23 +47,9 @@ export const fetchCenters = () => (dispatch) => {
 
     dispatch(centersLoading(true));
 
-    return fetch(baseUrl + 'centers')
-    .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          var error = new Error('Error ' + response.status + ': ' + response.statusText);
-          error.response = response;
-          throw error;
-        }
-      },
-      error => {
-            var errmess = new Error(error.message);
-            throw errmess;
-      })
-    .then(response => response.json())
-    .then(centers => dispatch(addCenters(centers)))
-    .catch(error => dispatch(centersFailed(error.message)));
+    Axios.get(baseUrl + 'centers')
+    .then(centers => dispatch(addCenters(centers.data)))
+    .catch((error) => dispatch(centersFailed(error.message)));
 }
 
 export const centersLoading = () => ({

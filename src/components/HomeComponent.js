@@ -1,10 +1,10 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap'
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl1 } from '../shared/baseUrl';
 import { FadeTransform } from 'react-animation-components';
 import SearchComponent from './SearchComponent';
-import { SignIn } from './SignInComponent'
+import SignUp from './SignUpComponent'
 
 function RenderCard({ item, isLoading, errMess }) {
 
@@ -39,7 +39,7 @@ function RenderCard({ item, isLoading, errMess }) {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={baseUrl + item[0].image}
+              src={baseUrl1 + item[0].image}
               alt="First slide"
             />
             <Carousel.Caption className="caption">
@@ -50,7 +50,7 @@ function RenderCard({ item, isLoading, errMess }) {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={baseUrl + item[1].image}
+              src={baseUrl1 + item[1].image}
               alt="Third slide"
             />
 
@@ -62,7 +62,7 @@ function RenderCard({ item, isLoading, errMess }) {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={baseUrl + item[2].image}
+              src={baseUrl1 + item[2].image}
               alt="Third slide"
             />
 
@@ -85,7 +85,7 @@ function Home(props) {
           <div className="col-12 col-md-3 m-5 pt-2" id="signInCon">
             <h4 className="m-2">Sign Up ✔</h4>
               <img src="assets/images/profile.png" alt="Profile" id="profileImg"/>
-            <SignIn />
+            <SignUp />
           </div>
           <div className="col-12 col-md-6 m-5">
             <RenderCard item={props.center} isLoading={props.centersLoading} errMess={props.centerErrMess} />

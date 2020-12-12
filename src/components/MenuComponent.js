@@ -3,14 +3,15 @@ import { Card, CardImg, CardImgOverlay,
     CardTitle ,Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl1 } from '../shared/baseUrl';
 import SearchComponent from './SearchComponent'
 
-    function RenderMenuItem ({center, onClick}) {
+    function RenderMenuItem ({center}) {
+        //alert(JSON.stringify(center));
         return (
             <Card>
-                <Link to={`/menu/${center.id}`}>
-                    <CardImg width="100%" src={baseUrl + center.image} alt={center.name} />
+                <Link to={`/centers/${center._id}`}>
+                    <CardImg width="100%" src={baseUrl1 + center.image} alt={center.name} height="400" />
                     <CardImgOverlay>
                         <CardTitle className="text-white">{center.name}</CardTitle>
                     </CardImgOverlay>
@@ -20,8 +21,7 @@ import SearchComponent from './SearchComponent'
     }
 
     const Menu = (props) => {
-
-        const menu = props.centers.centers.map((center) => {
+        const menu = props.centers.map((center) => {
             return (
                 <div className="col-12 col-md-6 mb-2"  key={center.id}>
                     <RenderMenuItem center={center}/>
@@ -29,7 +29,7 @@ import SearchComponent from './SearchComponent'
             );
         });
         
-        if (props.centers.isLoading) {
+        if (props.isLoading) {
             return(
                 <div className="container">
                     <div className="row">            
@@ -38,7 +38,7 @@ import SearchComponent from './SearchComponent'
                 </div>
             );
         }
-        else if (props.centers.errMess) {
+        else if (props.errMess) {
             return(
                 <div className="container">
                     <div className="row"> 
@@ -62,7 +62,7 @@ import SearchComponent from './SearchComponent'
                         <hr />
                     </div> */}
                     <span id="route" className="ml-3 text-secondary"> Our Centers </span>
-                    <span className="ml-auto mr-auto"><SearchComponent centers={props.centers.centers}/></span>
+                    <span className="ml-auto mr-auto"><SearchComponent centers={props.allCenters}/></span>
                 </div>
                 <div className="row">
                     {menu}

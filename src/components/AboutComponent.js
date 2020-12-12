@@ -73,7 +73,7 @@ export function ReviewCardService() {
       />
       <CardMedia
         className={classes.media}
-        image="assets/images/phone talking...jpeg"
+        image="assets/images/phone.jpeg"
         title="Paella dish"
       />
       <CardContent>
@@ -138,7 +138,7 @@ export function ReviewCardGuarantee() {
       />
       <CardMedia
         className={classes.media}
-        image="assets/images/moneygirl.jpeg"
+        image="assets/images/handbyhand.jpeg"
         title="Paella dish"
       />
       <CardContent>
@@ -203,7 +203,7 @@ export function ReviewCardExperience() {
       />
       <CardMedia
         className={classes.media}
-        image="assets/images/doctor.jpeg"
+        image="assets/images/money_girl.jpg"
         title="Paella dish"
       />
       <CardContent>
@@ -267,7 +267,7 @@ export function ReviewCardCenters() {
       />
       <CardMedia
         className={classes.media}
-        image="assets/images/medicals.jpeg"
+        image="assets/images/medicalss.jpg"
         title="Paella dish"
       />
       <CardContent>

@@ -3,7 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
-import axios from 'axios';
+import Axios from 'axios';
 import { baseUrl } from '../shared/baseUrl';
 
 class Header extends Component {
@@ -14,9 +14,9 @@ class Header extends Component {
             isNavOpen: false,
             isModalOpen: false
         }
+        this.handleSignIn = this.handleSignIn.bind(this);
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleSignup = this.handleSignup.bind(this);
     }
     
     
@@ -32,21 +32,22 @@ class Header extends Component {
         });
     }
 
-    handleSignup(event) {
-        this.toggleModal();
-        alert("Email: " + this.email.value + "Username: " + this.username.value + " Password: " + this.password.value
-            );
+    handleSignIn(event) {
+        // alert("Username: " + this.username.value + " Password: " + this.password.value);
         event.preventDefault();
-        axios({
-            method: 'post',
-            url: baseUrl + 'users/signup' ,
+        Axios({
+            method : 'post',
+            url: baseUrl + 'users/login' ,
             data: {
-                email: this.email.value,
-                userName: this.username.value,
-                password: this.password.value,
-                // confirmPassword: this.confirmPassword.value
+                // email: this.email.value,
+                username: this.username.value,
+                password: this.password.value
             }
-          });
+          })
+          .then(res => {return JSON.stringify(res.data.token)})
+          .then(res => window.localStorage.setItem('jwtToken', res))
+        //   .then(res => this.setState({token: JSON.stringify(res.data.token)}))
+          this.toggleModal();
     }
 
     render() {
@@ -54,28 +55,28 @@ class Header extends Component {
             <React.Fragment>
                 <Navbar expand="md" id="myNav">
                     <div className="container">
-                        <NavbarBrand id="NavbarBrand" className="mr-auto"><img src="assets/images/logo.jpeg" alt="MedGira" height="48" width="51"/>  MedGira</NavbarBrand>
+                        <NavbarBrand id="NavbarBrand"><img src="assets/images/MedGiraLogo.png" alt="MedGira" height="48" width="51"/>  MedGira</NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} className="ml-auto"/>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="ml-auto" id="nestedNav">
                                 <NavItem>
                                     <NavLink className="nav-link" to="/home">
-                                        <span className="fa fa-home fa-lg slideTextTrigger"></span> <span className="slideText"> Home</span>
+                                         <span className="slideText"> Home</span>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/aboutus">
-                                        <span className="fa fa-info fa-lg"></span> About Us
+                                         About Us
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/menu">
-                                        <span className="fa fa-list fa-lg"></span> Medical Centers
+                                         Medical Centers
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/contactus">
-                                        <span className="fa fa-phone fa-lg"></span> Contact Us
+                                         Contact Us
                                     </NavLink>
                                 </NavItem>
                             </Nav>
@@ -84,7 +85,7 @@ class Header extends Component {
                                     <img src="assets/images/heart.png" alt="" height="41" width="150"></img>
                                 </NavItem> */}
                                 <NavItem>
-                                    <Button className="bg-white text-primary" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> Sign In</Button>
+                                    <Button id="signinbutton" className="bg-white" onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg "></span> Sign In</Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -93,7 +94,8 @@ class Header extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Sign In</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.handleSignup}>
+                        <Form model="signin" onSubmit={this.handleSignIn} id="signinstyle">
+                            <img src="assets/images/profile.jpg" alt="Profile" id="profileImgSignIn" />
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input type="text" id="username" name="username"

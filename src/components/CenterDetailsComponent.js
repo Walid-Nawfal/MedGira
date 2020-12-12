@@ -9,10 +9,11 @@ import {
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl, baseUrl1 } from '../shared/baseUrl';
 import { Fade, Stagger } from 'react-animation-components';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
+import Axios from 'axios';
 
 //import CommentFormButton from './CommentFormComponent'
 
@@ -25,12 +26,15 @@ class CommentFormButton extends Component {
         super(props);
 
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            rating: 0,
+            comment: ""
         }
 
         this.modalToggler = this.modalToggler.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+        this.handleCommentState = this.handleCommentState.bind(this);
+        this.handleRatingState = this.handleRatingState.bind(this)
     }
 
     modalToggler() {
@@ -39,10 +43,32 @@ class CommentFormButton extends Component {
         });
     }
 
-    handleSubmit(values) {
+    handleCommentState(event) {
+        this.setState({
+            comment: event.target.value
+        })
+    }
+
+    handleRatingState(event) {
+        this.setState({
+            rating: event.target.value
+        })
+    }
+
+    handleSubmit(event) {
         this.modalToggler();
-        this.props.postComment(this.props.centerId, values.rating, values.firstname, values.comment);
-        //event.preventDefault();
+        // alert('Bearer ' + window.localStorage.getItem('jwtToken'));
+        Axios({
+            method: 'post',
+            url: baseUrl + 'centers/'+ this.props.centerId + '/comments/',
+            data: {
+                rating: this.state.rating,
+                comment: this.state.comment
+            }
+
+            // headers: { Authorization: 'bearer ' + window.localStorage.getItem('jwtToken') }
+            // where do I get the JWT from?
+        });
     }
     render() {
         return (
@@ -55,7 +81,7 @@ class CommentFormButton extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="Rating" md={2}>Rating</Label>
                                 <Col md={10}>
-                                    <Control.select model=".rating" id="rating" name="rating" type="select" >
+                                    <Control.select model=".rating" id="rating" name="rating" type="select" onChange={this.handleRatingState} >
                                         <option selected value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -89,7 +115,7 @@ class CommentFormButton extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="comment" md={2}>Comment</Label>
                                 <Col md={10}>
-                                    <Control.textarea model=".comment" id="comment" name="comment" rows="6" />
+                                    <Control.textarea model=".comment" id="comment" name="comment" rows="6" onChange={this.handleCommentState}/>
                                 </Col>
                             </Row>
                             <Button type="submit" value="submit" color="primary">Submit</Button>
@@ -113,9 +139,9 @@ function RenderCenter({ center }) {
         }
       }
     return (
-        <div className='col-12 col-md-5 m-1'>
+        <div className='col-12 col-md-7 m-1'>
             <Card>
-                <CardImg src={baseUrl + center.image} alt={center.name} />
+                <CardImg src={baseUrl1 + center.image} alt={center.name} />
                 <CardBody>
                     <CardTitle>{center.name}</CardTitle>
                     <CardText>
@@ -132,7 +158,7 @@ function RenderCenter({ center }) {
     );
 };
 
-function RenderComments({ comments, postComment, centerId }) {
+function RenderComments({ comments, centerId, postComment }) {
 
     if (comments != null) {
 
@@ -142,7 +168,7 @@ function RenderComments({ comments, postComment, centerId }) {
                     <Fade in>
                         <li key={comment.id}>
                             <p>{comment.comment}</p>
-                            <p>--{comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
+                            <p>--{comment.author.username}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.createdAt)))}</p>
                         </li>
                     </Fade>
                 </Stagger>
@@ -150,7 +176,7 @@ function RenderComments({ comments, postComment, centerId }) {
         });
 
         return (
-            <div className="col-12 col-md-5 m-1">
+            <div className="col-12 col-md-3 m-1">
                 <div>
                     <h4>Comments</h4>
                     <ul className="list-unstyled">
@@ -211,9 +237,9 @@ const Center = (props) => {
 
                     <div className="row">
                         <RenderCenter center={props.center} />
-                        <RenderComments comments={props.comments}
+                        <RenderComments comments={props.center.comments}
                             postComment={props.postComment}
-                            centerId={props.center.id}
+                            centerId={props.center._id}
                         />
                     </div>
                 </div>
