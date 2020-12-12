@@ -9,7 +9,7 @@ import Axios from 'axios';
 const store = ConfigureStore();
 let authToken = window.localStorage.getItem('jwtToken');
 authToken = authToken.replace(/^"(.*)"$/, '$1');
-alert(authToken);
+// alert(authToken);
 Axios.interceptors.request.use(
   config => {
     config.headers.authorization = `Bearer ${authToken}`;

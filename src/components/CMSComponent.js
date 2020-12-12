@@ -19,7 +19,7 @@ class CMS extends Component {
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
         this.handleDel = this.handleDel.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
+        // this.handleEdit = this.handleEdit.bind(this);
     }
 
     handleNameChange(event) {this.setState({name: event.target.value})}
