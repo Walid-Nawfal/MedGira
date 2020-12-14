@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,
     Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label
+    Form, FormGroup, Input
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios';
