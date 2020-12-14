@@ -78,8 +78,7 @@ export function ReviewCardService() {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          Our team is ready for your calls 24/7.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -100,7 +99,7 @@ export function ReviewCardService() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            We have served 500+ customers around the world
+            Don't hesitate to contact our Customer Service Team on the number above for any information that comes on to your brain.
           </Typography>
         </CardContent>
       </Collapse>
@@ -143,8 +142,7 @@ export function ReviewCardGuarantee() {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          We are so trustfull that makes you feel safe!
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -165,7 +163,7 @@ export function ReviewCardGuarantee() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            We have served 500+ customers around the world
+            Money-back guarantee with MedGira for upto 1 month.
           </Typography>
         </CardContent>
       </Collapse>
@@ -208,8 +206,7 @@ export function ReviewCardExperience() {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        We are looking for a better future
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -230,7 +227,7 @@ export function ReviewCardExperience() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            We have served 500+ customers around the world
+          MedGira client experience includes commercial, educational and governmental survey project for improving ourselves and developing our skills.
           </Typography>
         </CardContent>
       </Collapse>
@@ -272,8 +269,7 @@ export function ReviewCardCenters() {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        Facilitate centers-client communication
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -294,7 +290,7 @@ export function ReviewCardCenters() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            We have served 500+ customers around the world
+            We've got the best booking support for clients all over the world.
           </Typography>
         </CardContent>
       </Collapse>

@@ -147,7 +147,8 @@ function RenderCenter({ center }) {
                     <CardText>
                         {center.description}
                     </CardText>
-                    <CardText className="ml-auto d-flex align-items-end">
+                    <CardText className="d-flex">
+                        <button className="btn btn-dark p-2">Book Now!</button>
                         <span className="ml-auto"><IconButton aria-label="add to favorites">
                             <FavoriteIcon color={favorite} onClick={handleFavClick} />
                         </IconButton></span>

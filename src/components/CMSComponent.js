@@ -50,6 +50,10 @@ class CMS extends Component {
     }
 
     render() {
+        if(window.localStorage.getItem('admin') === "false"){
+            window.location.replace("http://localhost:3001/");
+            return
+        }
         const collection = this.props.centers.map((center) => {
             return (
                 <tr>

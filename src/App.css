@@ -173,8 +173,8 @@ margin-bottom: 1vh;
 }
 
 #profileImgSignIn {
-  height: 30vh!important;
-  width: 65%;
+  height: 50%;
+  width: 80%;
   border-radius: 15px;
   margin-bottom: 1vh;
 }
@@ -185,7 +185,7 @@ width: 100%;
 
 #myNav{
 padding: 4px!important;
-border-radius: 60px;
+border-radius: 0 0 45px 45px;
 background-size: cover;
 background-color: rgb(51, 204, 255);
 /* background-image: url(wavee.png)!important;*/
@@ -227,7 +227,11 @@ height: 500px;
 }
 
 #signinbutton {
-color: rgb(51, 204, 255)!important;
+color:white!important;
+border: 0;
+border-bottom: 8px solid white;
+border-radius: 40%;
+background:transparent!important;
 }
 
 #CMSTable th, #CMSTable td{
@@ -249,4 +253,15 @@ color: rgb(51, 204, 255)!important;
 
 #CMSHeader {
   color: rgb(0, 191, 255);
+}
+
+#welcomeModalImg {
+  width: 100%;
+  height: 60%;
+}
+
+#medHistory {
+  width: 100%;
+  margin: auto;
+  height: 100%;
 }

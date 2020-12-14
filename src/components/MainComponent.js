@@ -13,6 +13,7 @@ import { postFeedback, postComment, fetchCenters} from '../redux/ActionCreators'
 import {actions} from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import CMS from './CMSComponent';
+import MedcialHistory from './MedicalHistoryComponent';
 
 const mapStateToProps = state => {
   return {
@@ -90,6 +91,7 @@ class Main extends Component {
                   <Route path='/centers/:centerId' component={CenterWithId} />
                   <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
                   <Route exact path='/CMS' component={() => <CMS centers={this.props.centers.centers}/>}></Route>
+                  <Route exact path='/MedicalHistory' component={() => <MedcialHistory />}></Route>
                   <Redirect to="/home" />
               </Switch>
             </CSSTransition>
